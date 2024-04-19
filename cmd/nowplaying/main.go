@@ -8,7 +8,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"os/exec"
 	"strings"
 	"time"
 
@@ -176,7 +175,12 @@ func runForOneHour() {
 				dia.Normalize(response.Item.Name))
 		}
 		fmt.Printf("nowPlayingString: %v\n", nowPlayingString)
-		exec.Command("ntfy", "pub", os.Getenv("NTFY_URL"), nowPlayingString).Run()
+
+		httpRequest, err := http.NewRequest("POST", os.Getenv("NTFY_URL"), strings.NewReader(nowPlayingString))
+		if err != nil {
+			continue
+		}
+		http.DefaultClient.Do(httpRequest)
 	}
 
 }
