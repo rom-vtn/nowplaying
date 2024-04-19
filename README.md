@@ -14,7 +14,7 @@ Just a simple script I got up to show my current Spotify "now playing" onto a ma
   - Copy the authorization code from the URL you've been redirected to and input it
   - You should get a refresh token, which you can then give to the `nowplaying` app
 - Setup the environment variables as described below
-- Build and run `cmd/nowplaying/main.go`
+- Build and run `./cmd/nowplaying/main.go`
 
 # Environment variables
 When running the `nowplaying` executable, you'll need to setup the following environment variables:
