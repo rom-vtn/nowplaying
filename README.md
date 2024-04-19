@@ -8,7 +8,7 @@ Just a simple script I got up to show my current Spotify "now playing" onto a ma
 - [Register an app on Spotify](https://developers.spotify.com)
 - > Note: you should probably use a local address with an unused port like `http://localhost:3000` in the registration process
 - Clone this repo and go into it
-- Run `go run cmd/auth/main.go`
+- Run `go run ./cmd/auth/main.go`
   - Input the app's registered data
   - Go to the URL and allow your app to access your account
   - Copy the authorization code from the URL you've been redirected to and input it
