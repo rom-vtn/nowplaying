@@ -10,8 +10,6 @@ import (
 	"os"
 	"strings"
 	"time"
-
-	dia "github.com/Regis24GmbH/go-diacritics"
 )
 
 type SpotifyTokenResponse struct {
@@ -161,18 +159,18 @@ func runForOneHour() {
 			// don't display album name if it's a single
 			if response.Item.Album.TotalTracks > 1 {
 				nowPlayingString = fmt.Sprintf("Now Playing: %s - %s (in %s)",
-					dia.Normalize(response.Item.Artists[0].Name),
-					dia.Normalize(response.Item.Name),
-					dia.Normalize(response.Item.Album.Name))
+					response.Item.Artists[0].Name,
+					response.Item.Name,
+					response.Item.Album.Name)
 			} else {
 				nowPlayingString = fmt.Sprintf("Now Playing: %s - %s",
-					dia.Normalize(response.Item.Artists[0].Name),
-					dia.Normalize(response.Item.Name))
+					response.Item.Artists[0].Name,
+					response.Item.Name)
 			}
 		case "episode":
 			nowPlayingString = fmt.Sprintf("You are now listening to: 102.3, REAL %s FM, where we play NOTHING but %s",
-				dia.Normalize(response.Item.Show.Name),
-				dia.Normalize(response.Item.Name))
+				response.Item.Show.Name,
+				response.Item.Name)
 		}
 		fmt.Printf("nowPlayingString: %v\n", nowPlayingString)
 
