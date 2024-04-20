@@ -159,7 +159,7 @@ func runForOneHour() {
 		switch response.CurrentlyPlayingType {
 		case "track":
 			// don't display album name if it's a single
-			if response.Item.Album.AlbumType != "single" {
+			if response.Item.Album.TotalTracks > 1 {
 				nowPlayingString = fmt.Sprintf("Now Playing: %s - %s (in %s)",
 					dia.Normalize(response.Item.Artists[0].Name),
 					dia.Normalize(response.Item.Name),
