@@ -174,7 +174,7 @@ func runForOneHour() {
 		}
 		fmt.Printf("nowPlayingString: %v\n", nowPlayingString)
 
-		httpRequest, err := http.NewRequest("POST", os.Getenv("NTFY_URL"), strings.NewReader(nowPlayingString))
+		httpRequest, err := http.NewRequest("POST", os.Getenv("POST_URL"), strings.NewReader(nowPlayingString))
 		if err != nil {
 			continue
 		}
