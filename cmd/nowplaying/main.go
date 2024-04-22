@@ -24,7 +24,7 @@ type SpotifyNowPlayingRepsonse struct {
 	ProgressMs           int         `json:"progress_ms"`
 	IsPlaying            bool        `json:"is_playing"`
 	CurrentlyPlayingType string      `json:"currently_playing_type"`
-	Item                 TrackObject `json:"item"` //can be episode but we don't care if it's an episode
+	Item                 TrackObject `json:"item"`
 }
 
 type TrackObject struct {
