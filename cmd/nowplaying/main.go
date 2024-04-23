@@ -111,6 +111,12 @@ func getCurrentlyPlaying(token string) (SpotifyNowPlayingRepsonse, error) {
 		return SpotifyNowPlayingRepsonse{}, err
 	}
 
+	// handle HTTP 204 accordingly
+	// NOTE: this will set the field `IsPlaying` to `false`
+	if httpResponse.StatusCode == 204 {
+		return SpotifyNowPlayingRepsonse{}, nil
+	}
+
 	if httpResponse.StatusCode != 200 {
 		return SpotifyNowPlayingRepsonse{}, fmt.Errorf("didnt get HTTP 200 from API")
 	}
@@ -148,6 +154,7 @@ func runForOneHour() {
 		}
 
 		// we want the content to actually be playing
+		// this will prevent reading if we got an HTTP 204
 		if !response.IsPlaying {
 			continue
 		}
